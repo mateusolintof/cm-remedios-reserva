@@ -1,0 +1,148 @@
+@import "tailwindcss";
+@plugin "../../hero.ts";
+@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+@custom-variant dark (&:is(.dark *));
+
+/* Theme tokens - CM Remédios */
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  color-scheme: light;
+
+  /* Brand Colors */
+  --prime-primary: #041e42;
+  --prime-accent: #41b6e6;
+  --prime-dark: #041e42;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-prime: var(--prime-primary);
+  --color-prime-accent: var(--prime-accent);
+  --color-prime-dark: var(--prime-dark);
+
+  --font-sans: var(--font-montserrat);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-montserrat);
+}
+
+/* Base styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Helpers for slide-like spacing in a continuous page */
+.section {
+  @apply py-12 md:py-16;
+}
+
+.section-title { @apply text-3xl md:text-5xl font-bold text-prime; }
+
+.subtitle {
+  @apply text-base md:text-lg text-slate-600;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-lg bg-prime-accent px-5 py-3 text-prime-dark font-semibold hover:bg-sky-400 transition-colors;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-prime-accent/60 bg-white px-4 py-2 text-sm font-semibold text-prime shadow-sm hover:border-prime hover:bg-prime-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-prime-accent focus-visible:ring-offset-2 transition-colors cursor-pointer;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-xs md:text-sm text-slate-600 bg-white shadow-sm;
+}
+
+.card {
+  @apply rounded-2xl border border-slate-200 bg-white/80 backdrop-blur shadow-sm p-6;
+}
+
+.kicker {
+  @apply uppercase tracking-widest text-xs font-semibold text-prime;
+}
+
+.hero-kicker {
+  @apply uppercase tracking-widest text-lg md:text-xl font-extrabold text-prime;
+}
+
+.btn-benefits {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.95rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--prime-primary);
+  background: #f8fafc;
+  border: 1.5px solid color-mix(in oklab, var(--prime-accent) 35%, white);
+  box-shadow: 0 12px 35px rgba(4, 30, 66, 0.08);
+  transition: transform 180ms ease, box-shadow 200ms ease, border-color 160ms ease, color 160ms ease;
+}
+.btn-benefits::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, color-mix(in oklab, var(--prime-primary) 75%, white), var(--prime-accent), color-mix(in oklab, var(--prime-primary) 75%, white));
+  background-size: 220% 220%;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 180ms ease, transform 200ms ease;
+}
+.btn-benefits::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: inherit;
+  background: #ffffff;
+  z-index: -1;
+}
+.btn-benefits:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 14px 40px rgba(4, 30, 66, 0.12);
+  border-color: color-mix(in oklab, var(--prime-accent) 70%, white);
+}
+.btn-benefits:hover::before {
+  opacity: 0.8;
+  animation: benefits-glow 1.4s ease infinite;
+}
+.btn-benefits:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--prime-accent) 80%, white);
+  outline-offset: 3px;
+}
+.btn-benefits svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+@keyframes benefits-glow {
+  0% { transform: translateX(-4%); background-position: 0% 50%; }
+  50% { transform: translateX(4%); background-position: 100% 50%; }
+  100% { transform: translateX(-4%); background-position: 0% 50%; }
+}
+
+/* React Flow — estilos de nós temáticos (cores do tema) */
+.flow-node {
+  border: 1.5px solid color-mix(in oklab, var(--color-prime) 40%, white);
+  background: color-mix(in oklab, var(--color-prime) 6%, white);
+  border-radius: 12px;
+}
+.flow-node--primary {
+  border-color: var(--color-prime);
+  background: color-mix(in oklab, var(--color-prime) 14%, white);
+}
+.flow-node--decision {
+  border-color: var(--color-prime-accent);
+  background: color-mix(in oklab, var(--color-prime-accent) 18%, white);
+}
+.flow-node--output {
+  border-color: color-mix(in oklab, var(--color-prime) 60%, white);
+  background: color-mix(in oklab, var(--color-prime) 4%, white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.04);
+}

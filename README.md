@@ -1,6 +1,6 @@
-Proposta — Dr. Maurício Ernesto • Agentes de IA para Atendimento Comercial
+Proposta CM Remedios • Agentes de IA para Atendimento Comercial
 
-Este repositório é uma instância do template de propostas interativas da Convert.AI, adaptado para o projeto do **Dr. Maurício Ernesto** com foco em **Agentes de IA para Atendimento Comercial** (SDR, FAQ, Anti No‑Show, CRM + Agenda Unificada + Dashboard + Fluxos/ROI).
+Proposta no formato de SPA para a venda de serviços tecnologicos, como automacoes e agentes de IA para a Agência de Tecnologia - CONVERT.AI
 
 Stack
 - Next.js 16 (App Router) + React 19.2
